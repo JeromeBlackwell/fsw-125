@@ -1,0 +1,14 @@
+{
+  "name": "bountyhunter",
+  "version": "1.0.0",
+  "description": "FSW-125 Week3 Pause and Practice",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jerome Blackwell",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
