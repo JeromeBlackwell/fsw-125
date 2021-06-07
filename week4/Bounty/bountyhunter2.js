@@ -8,11 +8,24 @@ router.post ('/', function (req, res) {
     res.send ( 'Post route on bountyhunter.');
 });
 
+get('/', (req, res) => {
+    
+res.send(bountyhunter)
+});
+
 get('/:id', (req, res) => {
+    const bountyId =req.params.id;
+    const find = bountys.find(bounty => bounty._id === bountyId);
+
+res.send(find)
+})
+
+.get('/:id', (req, res) => {
     const bountyId =req.params.id;
     const hunter = bountys.find(bounty => bounty._id === bountyId);
 
 res.send(hunter)
+})
 
 .delete('/:id', (req, res) => {
     const bountyId= req.params.id;
@@ -29,5 +42,5 @@ res.send(hunter)
 
     res.send('Resource successfully Updated!')
     })
-});
+
 module.exports = router;

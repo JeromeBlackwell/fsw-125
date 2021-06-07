@@ -8,7 +8,19 @@ router.post ('/', function (req, res) {
     res.send ( 'Post route on todo.');
 });
 
-get('/:id', (req, res) => {
+get('/', (req, res) => {
+    
+    res.send(todo)
+})
+    
+.get('/:id', (req, res) => {
+    const todoId =req.params.id;
+    const find = todos.find(todo => todo._id === todoId);
+
+res.send(find)
+})
+
+.get('/:id', (req, res) => {
     const todoId =req.params.id;
     const list = todos.find(todo => todo._id === todoId);
 
