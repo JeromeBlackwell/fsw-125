@@ -2,22 +2,22 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 
-//PORT...
+//port...
 const PORT = 5000
 
-// Middleware...
+// middleware...
 app.use(morgan("dev")) 
 app.use(express.json()); 
 
-//Routes
+//routes
 app.use("/inventoryItems", require("./routes/inventoryItemRouter"))
 
-// Error Handling...
+// error handling...
 app.use((err, req, res, next) => {
     return res.send({errMsg: err.message})
 })
 
-//Listening...
+//listening...
 app.listen(PORT, () => {
   console.log(`Server is running on PORT: ${PORT}`);
 });

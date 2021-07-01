@@ -2,7 +2,7 @@ const express = require("express");
 const inventoryItemRouter = express.Router(); 
 const { v4: uuidv4 } = require("uuid"); 
 
-// Database
+// adtabase...
 const inventoryItems = [
   {
     inventoryItem: "Banana",
@@ -42,13 +42,13 @@ const inventoryItems = [
   },
 ];
 
-//Get all...
+//get all...
 inventoryItemRouter
      .get("/", (req, res) => {
      res.status(200).send(inventoryItems)
  })
  
- // Get by type...
+ // get by type...
      .get("/search/inventoryItems", (req, res, next) => {
      const type = req.query.type
  
