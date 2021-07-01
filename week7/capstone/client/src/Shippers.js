@@ -1,38 +1,38 @@
 import React, { useState } from 'react'
-import AddJob from './AddJob';
+import Shipments from './Shipments';
 import './index.css'
 
-const Job = (props) => {
+const Shipment = (props) => {
     const { 
         company, 
-        title, 
+        goods, 
         type, 
         date, 
         status, 
         _id,
-        deleteJob,
-        editJob
+        deleteShipment,
+        editShipment
     } = props;
 
     const [editToggle, setEditToggle] = useState(false);
 
     return (
-        <div className="jobCard">
+        <div className="ShipmentCard">
             { 
                 !editToggle ?
                 <>
                     <h3>{company}</h3>
-                    <h4>{title} </h4>
+                    <h4>{goods} </h4>
                     <h4>Applied: {type ? "Yes" : "No"}</h4>
                     <h4>Date Applied: {date}</h4>
                     <h4>Status: {status}</h4>
-                    <button className='deleteB' onClick={() => deleteJob(_id)}>Remove</button>
+                    <button className='deleteB' onClick={() => deleteShipment(_id)}>Remove</button>
                     <button className='editB' onClick={() => setEditToggle(prevEditToggle => !prevEditToggle)}>Edit</button>
                 </>
                 :
                 <>
-                    <AddJob
-                        toggle={setEditToggle} submit={editJob} {...props}buttonText="Submit"/> 
+                    <AddShipment
+                        toggle={setEditToggle} submit={editShipment} {...props}buttonText="Submit"/> 
                 
                     <button className='cancelEditB' onClick={() => setEditToggle(prevEditToggle => !prevEditToggle)}>Cancel</button>
                 </>
@@ -40,4 +40,4 @@ const Job = (props) => {
         </div>
     )
 }
-export default Job
+export default Shipment

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import './index.css';
 
-const AddJob = (props) => {
+const Shipment = (props) => {
     const initInputs = {
         company: props.company || "",
-        title: props.title ||  "",
+        goods: props.goods ||  "",
         type: props.type || "",
         date: props.date || "",
         status: props.status || ""
@@ -38,10 +38,10 @@ const AddJob = (props) => {
             />
             <input
                 type='text'
-                name='title'
-                value={inputs.title}
+                name='goods'
+                value={inputs.goods}
                 onChange={handleChange}
-                placeholder='Job Title'
+                placeholder=' Goods'
             />
             <br /> <br />
             <label>Applied:</label> 
@@ -73,4 +73,4 @@ const AddJob = (props) => {
     );
 }
 
-export default AddJob
+export default Shipment

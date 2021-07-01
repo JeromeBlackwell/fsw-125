@@ -6,21 +6,21 @@ const morgan = require('morgan')
 const PORT = 7500;
 
 
-//middleware
+//middleware...
 app.use(express.json());
 app.use(morgan('dev'))
 
 
-//routes
+//routes...
 app.use("/jobs", require("./routes/route"));
 
-//error handling
+//error handling...
 app.use((err, req, res, next) => {
     console.log(err);
     return res.send({errMsg: err.message})
 })
 
-//server startup logic
+//server startup logic...
 app.listen(PORT, () => {
     console.log(`Server running on port: ${PORT}`)
 });

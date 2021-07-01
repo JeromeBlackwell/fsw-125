@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 
 html {
-  background-image: linear-gradient(to right, #a8caba 0%, #5d4157 100%);
+  background-image: linear-gradient(to right, #a1c4e0 0%, #927555 100%);
   text-align: center;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Times New Roman', Times, serif;
   color: black;
   scroll-behavior: smooth;
 }
@@ -38,7 +38,7 @@ input {
 }
 
 input:hover {
-  box-shadow: 1px 2px 5px #585858;
+  box-shadow: 1px 2px 5px #da6565;
 }
 
 .submitB {
@@ -48,7 +48,7 @@ input:hover {
 }
 
 .submitB:hover {
-  filter: drop-shadow(1px 2px 4px #585858);
+  filter: drop-shadow(1px 2px 4px #da6565);
 }
 
 .deleteB {
@@ -57,13 +57,13 @@ input:hover {
   margin-right: 3px;
 }
 .deleteB:hover {
-  filter: drop-shadow(1px 2px 4px #585858);
+  filter: drop-shadow(1px 2px 4px #da6565);
 }
 .editB {
   font-family: 'Playfair Display', serif;
 }
 .editB:hover {
-  filter: drop-shadow(1px 2px 4px #585858);
+  filter: drop-shadow(1px 2px 4px #da6565);
 }
 .cancelEditB {
   font-family: 'Playfair Display', serif;
@@ -71,11 +71,11 @@ input:hover {
 }
 
 .cancelEditB:hover {
-  filter: drop-shadow(1px 2px 4px #585858);
+  filter: drop-shadow(1px 2px 4px #da6565);
 }
-.jobCard {
+.shipperCard {
   font-size: 12px;
-  background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+  background-image: linear-gradient(to top, #c4a3a8 0%, #94a8c7 99%, #c4a3a8 100%);
   opacity: 0.9;
   border-radius: 15px;
   box-shadow: 6px 8px rgba(0,0,0,0.4);
@@ -89,27 +89,27 @@ input:hover {
   margin-top: 1.5%;
 }
 @media (min-width: 576px){
-  .jobCard, .img1 {
+  .shipperCard, .img1 {
   max-width: 540px;
 }}
 
 @media (min-width: 768px){
-  .jobCard, .img1 {
+  .shipperCard, .img1 {
   max-width: 720px;
 }}
 
 @media (min-width: 992px){
-  .jobCard, .img1 {
+  .shipperCard, .img1 {
   max-width: 960px;
 }}
 
 @media (min-width: 1200px){
-  .jobCard , .img1{
+  .shipperCard , .img1{
   max-width: 1040px;
 }}
 
 @media (max-width: 576px) {
-  .jobCard, .img1 {
+  .shipperCard, .img1 {
       max-width: 90vw;
   }
 }

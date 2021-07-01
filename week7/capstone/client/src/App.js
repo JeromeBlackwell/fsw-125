@@ -1,63 +1,63 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
-import Job from './Job'
-import AddJob from './AddJob'
+import Shippers from './Shippers'
+import Shipment from './Shipments'
 import './index.css'
 
 function App() {
-  const [job, setJob] = useState([]);
+  const [shipper, setShipper] = useState([]);
 
-  const getJob = () => {
-    axios.get('/jobs')
+  const getShipper = () => {
+    axios.get('/Shippers')
     .then(res => {
-      setJob(res.data);
+      setShipper(res.data);
     })
     .catch(err => {
       console.log(err);
     })
   }
   
-  const addJob = newJob => {
-    axios.post('/jobs', newJob)
-      .then(res => setJob(prevJob => [...prevJob, res.data]))
+  const addShipper = newShipper => {
+    axios.post('/Shippers', newShipper)
+      .then(res => setShipper(prevShipper => [...prevShipper, res.data]))
       .catch(err => console.log(err))
   }
   
-  const deleteJob = jobId => {
-    axios.delete(`/jobs/${jobId}`)
+  const deleteJob = ShipperId => {
+    axios.delete(`/Shippers/${ShipperId}`)
       .then(res => {
-        setJob(prevJob => prevJob.filter(job => job._id !== jobId))
+        setShipper(prevShipper => prevShipper.filter(shipper => shipper._id !== shipperId))
       })
       .catch(err => console.log(err))
   }
 
-  const editJob = (updates, jobId) => {
-    axios.put(`/jobs/${jobId}`, updates)
+  const editShipper = (updates, shipperId) => {
+    axios.put(`/Shippers/${shipperId}`, updates)
       .then(res => {
-        setJob(prevJob => prevJob.map(job => job._id !== jobId ? job : res.data))
+        setJob(prevShipper => prevShipper.map(shipper => shipper._id !== shipperId ? shipper : res.data))
       })
       .catch(err => console.log(err))
   }
 
   useEffect(() => {
-    getJob();
+    getShipper();
   }, []);
 
   return (
     <div>
-      <h1>Job Application Tracker</h1>
-      <img className='img1' src='https://images.unsplash.com/photo-1586282391129-76a6df230234?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80' alt='logo' />
+      <h1>Shipment Application Tracker</h1>
+      <img className='img1' src='https://images.unsplash.com/photo-1494412685616-a5d310fbb07d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bG9naXN0aWNzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' alt='logo' />
       <h2>Job Submission Form</h2>
       <AddJob
-        submit={addJob}
-        buttonText={"Post Job"}
+        submit={addShipper}
+        buttonText={"Post Shipment"}
       />
-      <h2>List of Potential Jobs</h2>
-      {job.map(job =>
-        <Job {...job}
-        deleteJob={deleteJob}
-        editJob={editJob}
-        key={job._id}
+      <h2>List of Potential Shipment</h2>
+      {shipper.map(shipper =>
+        <shipper {...shipper}
+        deleteShipper={deleteShipper}
+        editShipper={editShipper}
+        key={shipper._id}
         />)}
     </div>
   );

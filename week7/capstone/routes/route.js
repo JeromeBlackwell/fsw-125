@@ -2,81 +2,81 @@ const express = require("express");
 const route = express.Router();
 const { v4: uuidv4 } = require('uuid');
 
-const jobs = [
+const shippers = [
   {
-    company: "",
-    title: "",
+    company: "Walmart, LLC",
+    goods: "air conditioners",
     type: true,
-    date: 42021,
-    status: "waiting",
+    date: 52621,
+    status: "delivered",
     _id: uuidv4(),
   },
   {
-    company: "Honey",
-    title: "Full Stack Developer",
+    company: "Mercedes-Benz of North America",
+    goods: "GL350",
     type: false,
     date: 52821,
-    status: "will apply",
+    status: "in route",
     _id: uuidv4(),
   },
   {
-    company: "ZenDesk",    
-    title: "Developer Support and Enablement Engineer",
+    company: "Wegmans, LLC",    
+    goods: "Poultry",
     type: true,
     date: 51521,
-    status: "interview scheduled",
+    status: "delivered",
     _id: uuidv4(),
   },
   {
-    company: "ChowNow",
-    title: "Backend Developer",
+    company: "Lockhead Martin Corporation",
+    goods: "air plane engine",
     type: false,
-    date: 41221,
-    status: "will apply",
+    date: 70121,
+    status: "delayed",
     _id: uuidv4(),
   },
   {
-    company: "Play Station",
-    title: "Software Development Engineer in Test",
+    company: "Walt Disney LLC, Orlando",
+    goods: "building supplies",
     type: true,
-    date: 32821,
-    status: "2nd interview scheduled",
+    date: 62821,
+    status: "in route",
     _id: uuidv4(),
   },
 ];
 
 route
 
-// Get all
+// get all...
   .get('/', (req, res, next) => {
-    res.status(200).send(jobs);
+    res.status(200).send(shipper);
   }) 
 
-// Get one  
-  .get('/:jobId', (req, res, next) => {
-    const jobId = req.params.jobId;
-    const findJob = jobs.find((job) => job._id === jobId);
-    if (!findJob) {
+// get one...  
+  .get('/:shipperId', (req, res, next) => {
+    const shipperId = req.params.shipperId;
+    const findShipper = shipper.find((shipper) => shipper._id === shipperId);
+    if (!findShipper) {
       const error = new Error("Not found");
       res.status(500)
       return next(error);
     }
-    res.status(200).send(findJob);
+    res.status(200).send(findShipper);
   }) 
 
-  // Get ID
+  // get ID...
   .get('search/_id', (req, res, next) => {
-    const jobId = req.query._id;
-    const filteredJob = jobs.filter((job) => job._id === jobId);
-    if (!filteredJob) {
+    const shipperId = req.query._id;
+    const filteredShipper = shippers.filter((shipper) => shipper._id === shipperId);
+    if (!filteredShipper) {
       const error = new Error("Not found");
       res.status(500)
       return next(error);
     }
-    res.status(200).send(filteredJob);
+    res.status(200).send(filteredShipper);
   })
 
-  // Get type 
+  // get type... 
   .get('/search/type', (req, res, next) => {
     const type = req.query.type;
     console.log(type);
@@ -86,34 +86,34 @@ route
       res.status(500)
       return next(error);
     }
-    const filteredJob = jobs.filter(job => job.type === type);
-    res.status(200).send(filteredJob);
+    const filteredShipper = jobs.filter(shipper => shipper.type === type);
+    res.status(200).send(filteredShipper);
   }) 
 
-// Post one
+// post one...
   .post('/', (req, res, next) => {
-    const newJob = req.body;
-    newJob._id = uuidv4();
-    jobs.push(newJob);
+    const newShipper = req.body;
+    newShipper._id = uuidv4();
+    shippers.push(newShipper);
 
-    res.status(201).send(newJob);
+    res.status(201).send(newShipper);
   }) 
 
-// Edit one
-.put('/:jobId', (req, res, next) => {
-  const jobId = req.params.jobId;
-  const jobIndex = jobs.findIndex((job) => job._id === jobId);
-  Object.assign(jobs[jobIndex], req.body);
-  res.status(201).send("Job Status has been updated");
+// edit one...
+.put('/:shipperId', (req, res, next) => {
+  const shipperId = req.params.ShipperId;
+  const shipperIndex = shipper.findIndex((shipper) => shipper._id === shipperId);
+  Object.assign(shipper[shipperIndex], req.body);
+  res.status(201).send("Shipment Status has been updated");
 })
 
-// Delete one
-  .delete('/:jobId', (req, res, next) => {
-    const jobId = req.params.jobId;
-    const jobIndex = jobs.findIndex((job) => job._id === jobId);
-    jobs.splice(jobIndex, 1);
+// delete one...
+  .delete('/:shipperId', (req, res, next) => {
+    const shipperId = req.params.shipperId;
+    const shipperIndex = shippers.findIndex((shipper) => shipper._id === shipperId);
+    shippers.splice(shipperIndex, 1);
 
-    res.send("Job has been deleted");
+    res.send("Shipment has been deleted");
   });
 
 module.exports = route;
